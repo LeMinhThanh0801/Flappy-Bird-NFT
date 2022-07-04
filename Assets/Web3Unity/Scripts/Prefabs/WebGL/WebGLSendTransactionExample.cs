@@ -2,16 +2,20 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
-#if UNITY_WEBGL
+
 public class WebGLSendTransactionExample : MonoBehaviour
 {
+    public Text hash;
+
     async public void OnSendTransaction()
     {
         // account to send to
-        string to = "0x428066dd8A212104Bc9240dCe3cdeA3D3A0f7979";
+        string to = "0xdc449F530cBc713FF682d5B9389Ff51f2717A7Dd";
         // amount in wei to send
-        string value = "12300000000000000";
+        string value = "2000000000000000";
         // gas limit OPTIONAL
         string gasLimit = "";
         // gas price OPTIONAL
@@ -20,9 +24,17 @@ public class WebGLSendTransactionExample : MonoBehaviour
         try {
             string response = await Web3GL.SendTransaction(to, value, gasLimit, gasPrice);
             Debug.Log(response);
+            hash.text = response;
         } catch (Exception e) {
             Debug.LogException(e, this);
         }
     }
+
+    private void Update()
+    {
+        if(hash.text.Contains("0"))
+        {
+            SceneManager.LoadScene(2);
+        }
+    }
 }
-#endif
