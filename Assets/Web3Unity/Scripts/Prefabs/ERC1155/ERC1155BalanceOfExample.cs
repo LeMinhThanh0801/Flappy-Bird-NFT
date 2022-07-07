@@ -5,15 +5,22 @@ using UnityEngine;
 
 public class ERC1155BalanceOfExample : MonoBehaviour
 {
-    async void Start()
+    public GameObject FlappyAmarillo;
+
+    async public void CheckNFT()
     {
-        string chain = "avalanche";
-        string network = "testnet";
-        string contract = "0xbDF2d708c6E4705824dC024187cd219da41C8c81";
-        string account = "0xdD4c825203f97984e7867F11eeCc813A036089D1";
-        string tokenId = "2";
+        string chain = "ethereum";
+        string network = "rinkeby";
+        string contract = "0xa871d1a0D2aa66A568181D967F09A9c531881942";
+        string account = PlayerPrefs.GetString("Account");
+        string tokenId = "1";
 
         BigInteger balanceOf = await ERC1155.BalanceOf(chain, network, contract, account, tokenId);
         print(balanceOf);
+
+        if(balanceOf > 0)
+        {
+            FlappyAmarillo.SetActive(true);
+        }
     }
 }
