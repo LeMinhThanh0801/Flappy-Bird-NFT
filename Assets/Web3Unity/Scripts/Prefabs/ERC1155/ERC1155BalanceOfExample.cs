@@ -2,6 +2,7 @@ using System.Collections;
 using System.Numerics;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ERC1155BalanceOfExample : MonoBehaviour
 {
@@ -22,5 +23,10 @@ public class ERC1155BalanceOfExample : MonoBehaviour
         {
             FlappyAmarillo.SetActive(true);
         }
+    }
+
+    private void Update()
+    {
+        SceneManager.LoadScene(3);
     }
 }

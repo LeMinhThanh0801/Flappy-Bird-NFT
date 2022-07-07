@@ -36,17 +36,9 @@ public class FlappyMove : MonoBehaviour
         }
         else
 
-        if (collision.collider.tag == "winner")
+        if (collision.collider.tag == "medal")
         {
-
             ManageGame.Win();
-        }
-        else
-
-        if (collision.collider.tag == "easy")
-        {
-
-            ManageGame.WinFree();
         }
     }
 
